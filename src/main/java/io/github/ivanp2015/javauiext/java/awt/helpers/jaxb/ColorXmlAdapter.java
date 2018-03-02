@@ -51,7 +51,7 @@ public class ColorXmlAdapter extends XmlAdapter<ColorXmlAdapter.ColorValueType, 
      * See {@link XmlAdapter#unmarshal(java.lang.Object)} for more details.
      * @param v Object to un-marshal.
      * @return Un-marshaled object.
-     * @throws Exception 
+     * @throws Exception if there's an error during the conversion.
      */
     @Override
     public Color unmarshal(ColorValueType v) throws Exception {
@@ -62,7 +62,7 @@ public class ColorXmlAdapter extends XmlAdapter<ColorXmlAdapter.ColorValueType, 
      * See {@link XmlAdapter#marshal(java.lang.Object)} for more details.
      * @param v Object to marshal.
      * @return Marshaled object.
-     * @throws Exception 
+     * @throws Exception if there's an error during the conversion.
      */
     @Override
     public ColorValueType marshal(Color v) throws Exception {
@@ -85,7 +85,7 @@ public class ColorXmlAdapter extends XmlAdapter<ColorXmlAdapter.ColorValueType, 
         /**
          * Blue value
          */
-        @XmlAttribute(name = "b")
+        @XmlAttribute(name = "g")
         private int green;
         
         /**

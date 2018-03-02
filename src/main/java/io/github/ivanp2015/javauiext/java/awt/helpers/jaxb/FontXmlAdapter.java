@@ -51,7 +51,7 @@ public class FontXmlAdapter extends XmlAdapter<FontXmlAdapter.FontValueType, Fon
      * See {@link XmlAdapter#unmarshal(java.lang.Object)} for more details.
      * @param v Object to un-marshal.
      * @return Un-marshaled object.
-     * @throws Exception 
+     * @throws Exception if there's an error during the conversion.
      */
     @Override
     public Font unmarshal(FontValueType v) throws Exception {
@@ -62,7 +62,7 @@ public class FontXmlAdapter extends XmlAdapter<FontXmlAdapter.FontValueType, Fon
      * See {@link XmlAdapter#marshal(java.lang.Object)} for more details.
      * @param v Object to marshal.
      * @return Marshaled object.
-     * @throws Exception 
+     * @throws Exception if there's an error during the conversion.
      */
     @Override
     public FontValueType marshal(Font v) throws Exception {
