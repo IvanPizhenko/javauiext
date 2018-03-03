@@ -1,5 +1,6 @@
 /*
-Java UI Extensions project. https://ivanp2015.github.io/javauiext
+Java UI Extensions project.
+https://ivanp2015.github.io/javauiext
 
 Copyright (c) 2018, Ivan Pizhenko. All rights reserved.
 

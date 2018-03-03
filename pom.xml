@@ -4,7 +4,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 
 	<groupId>io.github.ivanp2015</groupId>
 	<artifactId>javauiext</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Java UI Extensions Project</name>
 	<url>https://ivanp2015.github.io/javauiext</url>
@@ -15,6 +15,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
+		<maven-resource-plugin.version>3.0.2</maven-resource-plugin.version>
 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
 		<junit.version>4.12</junit.version>
 	</properties>
@@ -33,6 +34,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resource-plugin.version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
