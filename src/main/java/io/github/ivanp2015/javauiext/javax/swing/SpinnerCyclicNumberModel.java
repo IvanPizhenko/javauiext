@@ -1,88 +1,104 @@
 /*
-Java UI Extensions project.
-https://ivanp2015.github.io/javauiext
-
-Copyright (c) 2018, Ivan Pizhenko. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without 
-modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice,
-this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice,
-this list of conditions and the following disclaimer in the documentation
-and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its contributors
-may be used to endorse or promote products derived from this software without
-specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
-CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Java UI Extensions project.
+ * https://ivanp2015.github.io/javauiext
+ * 
+ * Copyright (c) 2018, Ivan Pizhenko. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.  Ivan Pizhenko designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by Ivan Pizhenko in the LICENSE file that accompanied this code.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
 
 package io.github.ivanp2015.javauiext.javax.swing;
 
 import javax.swing.SpinnerNumberModel;
 
 /**
- * Cyclic number model for {@link javax.swing.JSpinner}.
- * Wraps on the ends.
+ * Cyclic number model for {@link javax.swing.JSpinner}. Wraps at both ends.
+ *
+ * @see javax.swing.JSpinner
+ * @see javax.swing.SpinnerModel
+ * @see javax.swing.AbstractSpinnerModel
+ * @see javax.swing.SpinnerListModel
+ * @see javax.swing.SpinnerNumberModel
+ * @see javax.swing.SpinnerDateModel
+ *
  * @author Ivan Pizhenko
+ * @since 0.0.1
  */
 public class SpinnerCyclicNumberModel extends SpinnerNumberModel {
+    private static final long serialVersionUID = 1L;
+
     /**
-     * Initializes new object of class <code>CyclicSpinnerNumberModel</code>.
+     * Constructs new object of class {@code CyclicSpinnerNumberModel}.
+     * See more details at {@link javax.swing.SpinnerNumberModel#SpinnerNumberModel()}.
+     *
+     * @see javax.swing.SpinnerNumberModel#SpinnerNumberModel()
      */
     public SpinnerCyclicNumberModel() {}
 
     /**
-     * Initializes new object of class <code>CyclicSpinnerNumberModel</code>.
-     * @param value Initial value.
-     * @param minimum Minimum value.
-     * @param maximum Maximum value.
-     * @param stepSize Value step.
+     * Constructs new object of class {@code CyclicSpinnerNumberModel}.
+     * See more details at {@link javax.swing.SpinnerNumberModel#SpinnerNumberModel(double, double, double, double)}.
+     *
+     * @param value initial value.
+     * @param minimum minimum value.
+     * @param maximum maximum value.
+     * @param stepSize value step.
+     * @see javax.swing.SpinnerNumberModel#SpinnerNumberModel(double, double, double, double)
      */
-    public SpinnerCyclicNumberModel(double value, double minimum, double maximum, double stepSize) {
+    public SpinnerCyclicNumberModel(double value, double minimum, double maximum,
+            double stepSize) {
         super(value, minimum, maximum, stepSize);
     }
 
     /**
-     * Initializes new object of class <code>CyclicSpinnerNumberModel</code>.
-     * @param value Initial value.
-     * @param minimum Minimum value.
-     * @param maximum Maximum value.
-     * @param stepSize Value step.
+     * Constructs new object of class {@code CyclicSpinnerNumberModel}.
+     * See more details at {@link javax.swing.SpinnerNumberModel#SpinnerNumberModel(int, int, int, int)}.
+     * 
+     * @param value initial value.
+     * @param minimum minimum value.
+     * @param maximum maximum value.
+     * @param stepSize value step.
+     * @see javax.swing.SpinnerNumberModel#SpinnerNumberModel(int, int, int, int)
      */
     public SpinnerCyclicNumberModel(int value, int minimum, int maximum, int stepSize) {
         super(value, minimum, maximum, stepSize);
     }
 
     /**
-     * Initializes new object of class <code>CyclicSpinnerNumberModel</code>.
-     * @param value Initial value.
-     * @param minimum Minimum value.
-     * @param maximum Maximum value.
-     * @param stepSize Value step.
+     * Constructs new object of class {@code CyclicSpinnerNumberModel}.
+     * See more details at {@link javax.swing.SpinnerNumberModel#SpinnerNumberModel(Number, Comparable, Comparable, Number)}.
+     *
+     * @param value initial value.
+     * @param minimum minimum value.
+     * @param maximum maximum value.
+     * @param stepSize value step.
+     * @see javax.swing.SpinnerNumberModel#SpinnerNumberModel(Number, Comparable, Comparable, Number)
      */
-    public SpinnerCyclicNumberModel(Number value, Comparable minimum, Comparable maximum, Number stepSize) {
+    public SpinnerCyclicNumberModel(Number value, Comparable<?> minimum, Comparable<?> maximum,
+            Number stepSize) {
         super(value, minimum, maximum, stepSize);
     }
-    
+
     /**
-     * Returns next value or wraps up to a maximum value, if values are exhausted.
+     * Returns next value or wraps to a maximum value, if values are exhausted.
+     *
+     * @return next value.
      * @see SpinnerNumberModel#getPreviousValue()
-     * @return Next value.
      */
     @Override
     public Object getPreviousValue() {
@@ -91,9 +107,10 @@ public class SpinnerCyclicNumberModel extends SpinnerNumberModel {
     }
 
     /**
-     * Returns next value or wraps down to a minimum value, if values are exhausted.
+     * Returns next value or wraps to a minimum value, if values are exhausted.
+     *
+     * @return next value.
      * @see SpinnerNumberModel#getNextValue()
-     * @return Next value.
      */
     @Override
     public Object getNextValue() {

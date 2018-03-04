@@ -1,35 +1,26 @@
 /*
-Java UI Extensions project.
-https://ivanp2015.github.io/javauiext
-
-Copyright (c) 2018, Ivan Pizhenko. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without 
-modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice,
-this list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice,
-this list of conditions and the following disclaimer in the documentation
-and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its contributors
-may be used to endorse or promote products derived from this software without
-specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
-CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Java UI Extensions project.
+ * https://ivanp2015.github.io/javauiext
+ * 
+ * Copyright (c) 2018, Ivan Pizhenko. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.  Ivan Pizhenko designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by Ivan Pizhenko in the LICENSE file that accompanied this code.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ */
 
 package io.github.ivanp2015.javauiext.java.awt.helpers.jaxb;
 
@@ -41,78 +32,77 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
- * Adapter for XML serialization of the {@link  java.awt.Color}.
- * See this <a href="https://stackoverflow.com/a/33056815/1540501">SO answer</a>
- * for more details about the idea.
+ * Adapter for XML serialization of the {@link java.awt.Color}.
+ *
+ * @see <a href="https://stackoverflow.com/a/33056815/1540501">Stackoverflow answer.</a>
+ * @see XmlAdapter
+ * @see javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
+ *
  * @author Ivan Pizhenko
+ * @since 0.0.2
  */
-public class ColorXmlAdapter extends XmlAdapter<ColorXmlAdapter.ColorValueType, Color> {
+public class ColorXmlAdapter extends XmlAdapter<ColorXmlAdapter.RGBColorData, Color> {
 
     /**
      * See {@link XmlAdapter#unmarshal(java.lang.Object)} for more details.
+     *
      * @param v Object to un-marshal.
      * @return Un-marshaled object.
      * @throws Exception if there's an error during the conversion.
      */
     @Override
-    public Color unmarshal(ColorValueType v) throws Exception {
+    public Color unmarshal(RGBColorData v) throws Exception {
         return v.toColor();
     }
 
     /**
      * See {@link XmlAdapter#marshal(java.lang.Object)} for more details.
+     *
      * @param v Object to marshal.
      * @return Marshaled object.
      * @throws Exception if there's an error during the conversion.
      */
     @Override
-    public ColorValueType marshal(Color v) throws Exception {
-        return new ColorValueType(v);
+    public RGBColorData marshal(Color v) throws Exception {
+        return new RGBColorData(v);
     }
 
     /**
-     * XML serialization proxy type for {@link java.awt.Color}.
+     * XML serialization helper type for {@link java.awt.Color}.
      */
     @XmlType(name="RGBColor", propOrder = {}, namespace="https://ivanp2015.github.io/javauiext/java/awt")
     @XmlAccessorType(XmlAccessType.NONE)
-    public static final class ColorValueType {
+    public static final class RGBColorData {
 
-        /**
-         * Red value.
-         */
         @XmlAttribute(name = "r")
         private int red;
-        
-        /**
-         * Blue value
-         */
+
         @XmlAttribute(name = "g")
         private int green;
-        
-        /**
-         * Green value.
-         */
+
         @XmlAttribute(name = "b")
         private int blue;
 
         /**
-         * Initializes new object of class <code>ColorValueType</code>.
+         * Constructs new object of class {@code RGBColorData}.
          */
-        public ColorValueType() {
+        public RGBColorData() {
         }
-        
+
         /**
-         * Initializes new object of class <code>ColorValueType</code>.
+         * Constructs new object of class {@code RGBColorData}.
+         *
          * @param color Source color.
          */
-        public ColorValueType(Color color) {
+        public RGBColorData(Color color) {
             this.red = color.getRed();
             this.green = color.getGreen();
             this.blue = color.getBlue();
         }
-        
+
         /**
-         * Converts to color object.
+         * Converts this object to {@link java.awt.Color} object.
+         *
          * @return New color object.
          */
         public Color toColor() {
